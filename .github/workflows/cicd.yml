@@ -1,24 +1,24 @@
 name: .NET
 
 on:
-  push: # xxxをプッシュイベントに変えてください
-    branches: [ "main" ] # mainブランチを対象にしてください
-  pull_request: # xxxをプルリクエストイベントに変えてください
-    branches: [ "main" ] # mainブランチを対象にしてください
-  workflow_dispatch: # xxxを手動イベントに変えてください
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 # チェックアウトアクションを記入してください
+      - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
       - name: Restore dependencies
-        run: dotnet restore ./src/SampleApplication.csproj # この行にdotnetのリストアコマンドを記入してください
+        run: dotnet restore ./src/SampleApplication.csproj
       - name: Build
         run: dotnet build --no-restore
       - name: Publish
